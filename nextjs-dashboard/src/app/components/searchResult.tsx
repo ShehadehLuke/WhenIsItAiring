@@ -6,7 +6,7 @@ export const SearchResult = (props: {title: string, image: string, timeUntilAiri
     let nextAirDateYear = 0;
     let nextAirDateMonth = 0;
     let nextairDateDay = 0;
-    let airingDate: Date;
+    let airingDate = new Date();
     //Calculate time until next airing date for the recieved episode
     if (props.timeUntilAiring != null && props.airingTime != null) {    
         nextAirDateYear = Math.floor(props.timeUntilAiring / 31536000);
