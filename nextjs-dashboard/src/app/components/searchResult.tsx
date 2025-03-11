@@ -1,9 +1,13 @@
+import Image from "next/image"
+
+//Individual search result component. Calculates necessary information and returns html to be rendered
 export const SearchResult = (props: {title: string, image: string, timeUntilAiring: number | null, nextEpisode: number | null, lastEpisodeYear: number, lastEpisodeMonth: number, airingTime: number | null}) => {
     const nextEpisodeConfirmed = props.timeUntilAiring == null ? false : true
     let nextAirDateYear = 0;
     let nextAirDateMonth = 0;
     let nextairDateDay = 0;
     let airingDate: Date;
+    //Calculate time until next airing date for the recieved episode
     if (props.timeUntilAiring != null && props.airingTime != null) {    
         nextAirDateYear = Math.floor(props.timeUntilAiring / 31536000);
         nextAirDateMonth = Math.floor((props.timeUntilAiring % 31536000) / 2628000);
@@ -13,7 +17,7 @@ export const SearchResult = (props: {title: string, image: string, timeUntilAiri
     return (
     <div className="flex bg-white p-6 shadow-lg outline outline-black/5">
         <div className="flex h-[250px] w-[250px]">
-            <img src={props.image} className="flex object-contain"/>
+            <Image src={props.image} width={500} height={500} className="flex object-contain" alt="Anime Thumbnail" />
         </div>
         <div>
             <p className="text-lg font-bold">{props.title}</p>

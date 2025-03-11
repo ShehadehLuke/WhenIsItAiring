@@ -4,7 +4,6 @@ import { JSX, useEffect, useState } from "react";
 import { searchAnime } from "../getData"
 import { SearchResult } from "./searchResult"
 import { useSearchParams } from "next/navigation"
-import { stringify } from "querystring";
 
 let results: JSX.Element[] = [];
 interface Result {
@@ -20,17 +19,16 @@ interface Result {
 let allResults: Result[] = [];
 
 const AllResults = () => {
-        
-    const [response, setResponse] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const searchParams = useSearchParams()
-    const searchQuery = searchParams && searchParams.get("q");
+    const searchInput = searchParams && searchParams.get("q");
+    let JSONResults: any;
     useEffect(() => {
         const getResults = async() => {
             allResults = [];
             try{
-                var JSONResults = await searchAnime(searchQuery)
+                JSONResults = await searchAnime(searchInput)
             } finally {
                 setLoading(false);
             }
@@ -49,7 +47,7 @@ const AllResults = () => {
             }
             
             results = allResults.map((result, index) =>
-                <SearchResult title={result.title} image={result.image} timeUntilAiring={result.timeUntilAiring} lastEpisodeMonth={result.timeLastAiredMonth} lastEpisodeYear={result.timeLastAiredYear} airingTime={result.airingTime} nextEpisode={result.nextEpisode}/>
+                <SearchResult key={index} title={result.title} image={result.image} timeUntilAiring={result.timeUntilAiring} lastEpisodeMonth={result.timeLastAiredMonth} lastEpisodeYear={result.timeLastAiredYear} airingTime={result.airingTime} nextEpisode={result.nextEpisode}/>
             )
         }
         getResults();
