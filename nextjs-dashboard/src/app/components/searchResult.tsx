@@ -20,13 +20,14 @@ export const SearchResult = (props: {title: string, image: string, timeUntilAiri
             {nextEpisodeConfirmed == true ? 
             <div>
                 <p className="text-green-600 text-bold">Next episode is confirmed!</p>
-                <p>Episode <strong>{props.nextEpisode}</strong> will air in</p>
-                <p className="flex text-2xl bg-white p-6 shadow-lg text-gray-500">
+                <p className="text-lg">Episode <strong>{props.nextEpisode}</strong> will air in
+                <span className="flex text-2xl bg-white p-6 shadow-lg text-gray-700">
                     {nextAirDateYear != 0 ? {nextAirDateYear} + "years," : ""} 
                     {nextAirDateMonth != 0 ? {nextAirDateMonth} + "months, and" : ""} 
                     {nextairDateDay} days, 
                     on {airingDate.toLocaleDateString()} at {airingDate.toLocaleTimeString()}
-                </p> 
+                </span> 
+                </p>
             </div>
             : <div><p className="text-red-400">Next episode has not been confirmed.</p></div>}
         </div>
