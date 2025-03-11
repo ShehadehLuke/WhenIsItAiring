@@ -3,9 +3,9 @@ import {SearchInput} from "@/app/components/searchbar"
 
 export default function Search() {
     return (
-      <div>
+      <div className="text-center">
         <SearchInput defaultValue={""}></SearchInput> 
-        <h1>Search Results</h1>
+        <h1 className="text-xl font-mono">Search Results</h1>
         <AllResults />
       </div>
     )
