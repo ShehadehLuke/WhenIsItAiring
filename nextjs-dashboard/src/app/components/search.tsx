@@ -1,6 +1,6 @@
 'use client';
 
-import { JSX, useEffect, useState } from "react";
+import { JSX, Suspense, useEffect, useState } from "react";
 import { searchAnime } from "../getData"
 import { SearchResult } from "./searchResult"
 import { useSearchParams } from "next/navigation"

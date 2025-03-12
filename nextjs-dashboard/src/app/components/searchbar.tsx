@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { useState, ChangeEvent } from "react"
+import { useState, ChangeEvent, Suspense } from "react"
 
 
 interface iDefault {
@@ -21,7 +21,7 @@ export const SearchInput = ({defaultValue}: iDefault) => {
 
     const handleSearch = () => {
         if (inputValue){
-            router.push(`/pages/search/?q=${inputValue}`)  
+            router.push(`/search/?q=${inputValue}`)  
         }
 
         if (!inputValue) return router.push("/")
