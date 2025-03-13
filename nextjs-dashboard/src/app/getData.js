@@ -120,36 +120,6 @@ var url = 'https://graphql.anilist.co'
 
   }
 
-  async function getSearchPageData(id){
-      variables = {
-          'id': id
-      }
-
-      var options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          query: dataQuery,
-          variables: variables,
-          "grant_type": "authorization_code",
-          "client_id": "24651",
-          "client_secret": "68R9s72GDKwOqdLKVj0lQpMuxRocB3tb893ixKyE",
-          "redirect_uri": "WhenIsItAiring.com", 
-          "code": "WhenIsItAiring.com",
-        })
-      }
-
-      await fetch(url, options)
-      .then(handleResponse)
-      .then((responseData) =>{
-        return responseData;
-      })
-      .catch(handleError);
-  }
-
   function handleResponse(response){
     return response.json().then(function (json) {
       return response.ok ? json : Promise.reject(json)
