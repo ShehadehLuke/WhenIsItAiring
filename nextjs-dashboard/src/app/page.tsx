@@ -1,16 +1,24 @@
 import { SearchInput } from "./components/searchbar";
-export default async function Home()
-{
+import Header from "./components/header"
+import AllResults from "./components/search";
+import { Suspense } from "react";
 
+export default async function Home(props: {
+    searchParams?: Promise<{
+        query?: string;
+        page?: string;
+    }>;
+    }) {
+    const searchParams = await props.searchParams;
+    const query = searchParams?.query || '';
+    const currentPage = Number(searchParams?.page) || 1;
     return (
-        <div>
-            <div className="text-center bg-blue-400 shadow-xl h-[100px] font-mono font-bold p-5">
-                <h1 className="text-2xl">Anime Tracker</h1>
-            
-                <p className="text-lg">Search for an anime to check when it is next airing</p>
-            </div>
+        <div className="m-4">
+            <Header />
             <br></br>
-            <SearchInput defaultValue={""}/>
+            <SearchInput placeholder="hunter x hunter"/>
+
+            <Suspense><AllResults query={query} currentPage={currentPage}/></Suspense>
         </div>
     )
 }

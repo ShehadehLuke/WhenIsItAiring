@@ -1,28 +1,5 @@
 import { stringify } from "querystring";
 
-
-var dataQuery = `
-query($id: Int) {
-  media(id: $id) {
-    bannerImage
-    title {
-      english
-      romaji
-    }
-    endDate {
-      year
-      month
-      day
-    }
-    nextAiringEpisode {
-      episode
-      airingAt
-      timeUntilAiring
-    }
-  }
-}
-`;
-
 var searchQuery = `
 query ($search: String) {
   Page {
@@ -49,50 +26,10 @@ query ($search: String) {
 }
 `;
 
-var searchPageQuery = `
-query($id: Int) {
-  media(id: $id) {
-    title {
-      english
-      romaji
-    }
-    coverImage {
-      extraLarge
-    }
-  }
-}
-`;
+
 
 var url = 'https://graphql.anilist.co'
 //export class Searching {
-
-  async function getRequiredData(id){
-      
-    var variables = {
-      'id': id,
-      'episode': 4
-    };
-
-    var options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        query: dataQuery,
-        variables: variables
-      })
-    }
-
-    await fetch(url, options)
-    .then(handleResponse)
-    .then((responseData) =>{
-      console.log(stringify(responseData, null, 2))
-      return responseData;
-    })
-    .catch(handleError);
-  }
 
   export async function searchAnime(title){
       var variables = {
@@ -128,12 +65,5 @@ var url = 'https://graphql.anilist.co'
 
   function handleError(error){
     console.error(error);
-  }
-
-  function handleSearchResponse(data) {
-    console.log(JSON.stringify(data, null, 2))
-    fs.writeFile('SearchResult.json', JSON.stringify(data, null, 2), (err) => {
-      if (err) throw err;
-    })
   }
 //}
