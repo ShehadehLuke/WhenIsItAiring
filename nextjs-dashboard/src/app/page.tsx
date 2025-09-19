@@ -13,7 +13,7 @@ export default async function Home(props: {
     const query = searchParams?.query || '';
     const currentPage = Number(searchParams?.page) || 1;
     return (
-        <div className="m-4">
+        <div className="mt-4 mb-4 ml-24 mr-24">
             <Header />
             <br></br>
             <SearchInput placeholder="hunter x hunter"/>
