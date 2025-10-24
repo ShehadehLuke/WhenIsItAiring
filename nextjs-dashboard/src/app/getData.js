@@ -3,7 +3,7 @@ import { stringify } from "querystring";
 var searchQuery = `
 query ($search: String) {
   Page {
-    media(search: $search, type: ANIME, isAdult: false) {
+    media(search: $search, type: ANIME, isAdult: false, sort: POPULARITY_DESC) {
       endDate {
         year
         month

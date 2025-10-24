@@ -15,7 +15,7 @@ export const SearchResult = (props: {title: string, image: string, timeUntilAiri
         airingDate = new Date(props.airingTime * 1000);
     }
     return (
-    <div className="flex bg-white p-6 shadow-lg outline outline-black/5">
+    <div className="flex p-6 shadow-lg outline outline-black/5">
         <div className="flex h-[250px] w-[250px]">
             <Image src={props.image} width={500} height={500} className="flex object-contain" alt="Anime Thumbnail" />
         </div>
@@ -25,7 +25,7 @@ export const SearchResult = (props: {title: string, image: string, timeUntilAiri
             <div>
                 <p className="text-green-600 text-bold">Next episode is confirmed!</p>
                 <p className="text-lg">Episode <strong>{props.nextEpisode}</strong> will air in
-                <span className="flex text-2xl bg-white p-6 shadow-lg text-gray-700">
+                <span className="flex text-2xl p-6 shadow-lg">
                     {nextAirDateYear != 0 ? {nextAirDateYear} + "years," : ""} 
                     {nextAirDateMonth != 0 ? {nextAirDateMonth} + "months, and" : ""} 
                     {nextairDateDay} days, 
