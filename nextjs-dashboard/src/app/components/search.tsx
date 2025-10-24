@@ -26,7 +26,6 @@ export default async function AllResults({
     const getResults = async() => {
         allResults = [];
         JSONResults = await searchAnime(query)
-        console.log(JSONResults)
         for (let i = 0; i < JSONResults.data.Page.media.length; i++){           
             allResults.push({
                 id: JSONResults.data.Page.media[i].id,
@@ -39,11 +38,9 @@ export default async function AllResults({
                 airingTime: JSONResults.data.Page.media[i].nextAiringEpisode?.airingAt ?? null
             })
         }
-        
-        results = allResults.map((result, index) =>
+        return allResults.map((result, index) =>
             <SearchResult key={index} title={result.title} image={result.image} timeUntilAiring={result.timeUntilAiring} lastEpisodeMonth={result.timeLastAiredMonth} lastEpisodeYear={result.timeLastAiredYear} airingTime={result.airingTime} nextEpisode={result.nextEpisode}/>
         )
     }
-    getResults();
-    return results;
+    return getResults();
 };

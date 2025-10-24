@@ -18,7 +18,7 @@ export const SearchInput = ({placeholder}: {placeholder: string}) => {
             params.delete('query');
         }
         replace(`${pathname}?${params.toString()}`);
-    }, 300);
+    }, 500);
     return (
         <div className="search_input border-[2px] border-solid border-slate-500 flex flex-row items-center justify-center gap-5 rounded-[15px] mb-4">
             <input 
